@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EngageHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta
+      name="description"
+      content="EngageHub - A platform to connect, share, and engage with communities."
+    />
+    <meta property="og:title" content="EngageHub" />
+    <meta
+      property="og:description"
+      content="Join EngageHub to create posts, interact, and build a strong community."
+    />
+    <meta property="og:image" content="URL_TO_A_SOCIAL_MEDIA_THUMBNAIL" />
+    <meta property="og:type" content="website" />
+    <style>
+      .parallax {
+        position: relative;
+        overflow: hidden;
+        margin-top: 100px;
+        height: 50vh;
+        width: 100%;
+      }
+      .parallax-layer {
+        position: absolute;
+
+        inset: 0;
+
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .text-3d {
+        transform-style: preserve-3d;
+        perspective: 800px;
+      }
+      .logo{
+        width: 40px;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <header class="bg-white shadow-md py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="text-2xl font-bold text-blue-600">EngageHub</h1>
+        <nav>
+          <ul class="flex space-x-6">
+            <li>
+              <a href="/features" class="hover:text-blue-600">Features</a>
+            </li>
+            <li><a href="/chatbox" class="hover:text-blue-600">Chat box</a></li>
+            <li>
+              <a
+                href="/auth"
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="w-full text-center py-20 parallax">
+      <div
+        class="parallax-layer"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+        "
+      ></div>
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-center text-white text-3d"
+      >
+        <h2 class="text-4xl font-extrabold" id="animated-text">
+          Connect, Share, Engage
+        </h2>
+        <p class="mt-4 text-lg bg-black bg-opacity-50 px-4 py-2 rounded-lg">
+          Join EngageHub to create posts, interact, and build a strong
+          community.
+        </p>
+        <a
+          href="/auth"
+          class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300"
+          >Get Started</a
+        >
+      </div>
+    </section>
+
+    <section id="features" class="py-16 bg-transparent">
+      <div class="container mx-auto px-6 text-center">
+        <h3 class="text-3xl font-bold">Why Choose EngageHub?</h3>
+        <div class="boxes mt-8 grid md:grid-cols-3 gap-8">
+          <div
+            class="p-6 border rounded-lg shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            <h4 class="text-xl font-semibold">User Authentication</h4>
+            <p class="text-gray-600 mt-2">
+              Secure login and registration with modern authentication methods.
+            </p>
+          </div>
+          <div
+            class="p-6 border rounded-lg shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            <h4 class="text-xl font-semibold">Post Creation</h4>
+            <p class="text-gray-600 mt-2">
+              Share thoughts, updates, and media easily.
+            </p>
+          </div>
+          <div
+            class="p-6 border rounded-lg shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            <h4 class="text-xl font-semibold">Community Engagement</h4>
+            <p class="text-gray-600 mt-2">
+              Like, comment, and interact with posts effortlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-6 text-center">
+      <p>
+        &copy; 2025 EngageHub. All rights reserved. |
+        <a href="/privacy" class="hover:underline">Privacy Policy</a> |
+        <a href="/terms" class="hover:underline">Terms of Service</a>
+      </p>
+    </footer>
+  </body>
+</html>

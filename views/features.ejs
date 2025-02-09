@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngageHub - Features</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animated Gradient Background */
+        body {
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon {
+            position: absolute;
+            top: -10px;
+            left: 30%;
+            transform: translateX(-50%) translateY(-10px);
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 50px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Center the content */
+        .content-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Header -->
+    <header class="py-10 text-center">
+        <h1 class="text-4xl font-bold">EngageHub Features</h1>
+        <p class="mt-3 text-lg text-gray-300">Discover what makes EngageHub the best platform for community engagement.</p>
+    </header>
+
+    <!-- Features Section -->
+    <section class="content-container grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="feature-card">
+            <h2 class="text-2xl font-semibold">User Authentication</h2>
+            <p class="text-gray-300 mt-2">Secure login and registration with modern authentication methods.</p>
+        </div>
+
+        <div class="feature-card">
+            <h2 class="text-2xl font-semibold">Post Creation</h2>
+            <p class="text-gray-300 mt-2">Easily share your thoughts, updates, and media.</p>
+        </div>
+
+        <div class="feature-card">
+            <h2 class="text-2xl font-semibold">Community Engagement</h2>
+            <p class="text-gray-300 mt-2">Like, comment, and interact with posts effortlessly.</p>
+        </div>
+
+        <div class="feature-card">
+            <h5 class="coming-soon">Coming Soon</h5>
+
+            <h2 class="text-2xl font-semibold">Dark Mode</h2>
+            <p class="text-gray-300 mt-2">Enjoy a seamless experience with an elegant dark theme.</p>
+        </div>
+
+        <div class="feature-card relative">
+            <h5 class="coming-soon">Coming Soon</h5>
+            <h2 class="text-2xl font-semibold mt-4">Real-time Notifications</h2>
+            <p class="text-gray-300 mt-2">Stay updated with instant alerts and notifications.</p>
+        </div>
+
+        <div class="feature-card">
+            <h5 class="coming-soon">Coming Soon</h5>
+
+            <h2 class="text-2xl font-semibold">Advanced Search</h2>
+            <p class="text-gray-300 mt-2">Find content quickly with powerful search filters.</p>
+        </div>
+    </section>
+
+    <!-- Go to Home Button -->
+    <div class="text-center mt-10">
+        <a href="/" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Go to Home</a>
+    </div>
+
+</body>
+</html>

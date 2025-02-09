@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Profile Picture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .ball {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-900 to-black text-white flex items-center justify-center min-h-screen relative"
+  >
+    <!-- Profile Upload Section -->
+    <div
+      class="bg-black/10 backdrop-blur-lg border-2 border-zinc-800 rounded-lg p-8 max-w-md w-full text-center z-10"
+    >
+      <h3 class="text-3xl font-semibold mb-5">Upload Profile Picture</h3>
+      <form
+        autocomplete="off"
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+        class="space-y-4"
+      >
+        <label class="block cursor-pointer">
+          <input
+            type="file"
+            name="image"
+            class="hidden"
+            onchange="previewImage(event)"
+          />
+          <div
+            class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-zinc-600  transition-all"
+          >
+            <img id="imagePreview" alt="" class="w-full h-full object-cover" />
+          </div>
+        </label>
+        <input
+          type="submit"
+          class="w-full py-2 bg-yellow-600 hover:bg-yellow-700 transition-all rounded-md font-medium cursor-pointer"
+          value="Upload"
+        />
+      </form>
+    </div>
+
+    <!-- Floating Balls Animation -->
+    <script>
+      // Some random colors for balls
+      const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
+
+      const numBalls = 50; // Number of balls
+      const balls = [];
+
+      // Creating the balls
+      for (let i = 0; i < numBalls; i++) {
+        let ball = document.createElement("div");
+        ball.classList.add("ball");
+        ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+        ball.style.left = Math.floor(Math.random() * 100) + "vw";
+        ball.style.top = Math.floor(Math.random() * 100) + "vh";
+        ball.style.transform = "scale(" + Math.random() + ")";
+        ball.style.width = (Math.random() * 2 + 1) + "em"; // Set random size
+        ball.style.height = ball.style.width;
+
+        balls.push(ball);
+        document.body.append(ball);
+      }
+
+      // Animate the balls with random movement
+      balls.forEach((el, i) => {
+        let to = {
+          x: Math.random() * (i % 2 === 0 ? -11 : 11),
+          y: Math.random() * 12
+        };
+
+        let anim = el.animate(
+          [
+            { transform: "translate(0, 0)" },
+            { transform: `translate(${to.x}rem, ${to.y}rem)` }
+          ],
+          {
+            duration: (Math.random() + 1) * 2000, // Random duration
+            direction: "alternate",
+            fill: "both",
+            iterations: Infinity,
+            easing: "ease-in-out"
+          }
+        );
+      });
+
+      // Image preview function
+      function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const img = document.getElementById("imagePreview");
+          img.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    </script>
+  </body>
+</html>

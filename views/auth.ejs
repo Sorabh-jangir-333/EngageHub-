@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Sign Up</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        html {
+            height: 100%;
+            background-color: hsla(200, 40%, 30%, 0.4);
+            background-image:
+                url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+                url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+                url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+            background-repeat: repeat-x;
+            background-position:
+                0 20%,
+                0 100%,
+                0 50%,
+                0 100%,
+                0 0;
+            background-size:
+                2500px,
+                800px,
+                500px 200px,
+                1000px,
+                400px 260px;
+            animation: 500s para infinite linear;
+        }
+        @keyframes para {
+            100% {
+                background-position:
+                    -5000px 20%,
+                    -800px 95%,
+                    500px 50%,
+                    1000px 100%,
+                    400px 0;
+            }
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+            padding: 1em;
+            background-color: #171717d1;
+            border-radius: 25px;
+            transition: .4s ease-in-out;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 500px;
+        }
+        .form:hover {
+            transform: scale(1.05);
+            border: 1px solid black;
+        }
+        #heading {
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            border-radius: 15px;
+            padding: 0.6em;
+        }
+        .input-field {
+            background: none;
+            border: none;
+            outline: none;
+            width: 100%;
+            color: #d3d3d3;
+            border-bottom: 2px solid #aaa;
+            transition: border-color 0.3s ease-in-out;
+        }
+        .input-field:focus {
+            border-color: #0073e6;
+        }
+        .btn {
+            display: flex;
+            justify-content: center;
+            gap: 1.5em;
+        }
+        .button1, .button2 {
+            padding: 0.7em 2em;
+            border-radius: 25px;
+            border: none;
+            transition: .4s ease-in-out;
+            background-color: #252525;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+        .button1:hover, .button2:hover {
+            background-color: black;
+        }
+        .button2 {
+            background-color: #3c3c3c;
+        }
+        .button2:hover {
+            background-color: #555;
+        }
+        .toggle-btn {
+            text-align: center;
+            color: white;
+            font-size: 1em;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full min-h-screen flex items-center justify-center text-white">
+        <div class="form">
+            <p id="heading">Login or Sign Up</p>
+
+            
+            <!-- Signup Form -->
+            <form id="signup-form" action="/signup" method="post" style="display:none;">
+                <div class="field">
+                    <input autocomplete="off" placeholder="Full Name" class="input-field" type="text" name="name" required />
+                </div>
+                <div class="field">
+                    <input autocomplete="off" placeholder="Username" class="input-field" type="text" name="username" required />
+                </div>
+                <div class="field">
+                    <input autocomplete="off" placeholder="Password" class="input-field" type="password" name="password" required />
+                </div>
+                <div class="field">
+                    <input autocomplete="off" placeholder="Confirm Password" class="input-field" type="password" name="conpassword" required />
+                </div>
+                <div class="field">
+                    <input autocomplete="off" placeholder="Email Address" class="input-field" type="email" name="email" required />
+                </div>
+                <div class="field">
+                    <input autocomplete="off" placeholder="Age" class="input-field" type="number" name="age" required />
+                </div>
+                <div class="btn">
+                    <input type="submit" value="Create Account" class="button1">
+                    <a href="javascript:void(0)" onclick="toggleForm('login-form')" class="button2">Login</a>
+                </div>
+            </form>
+            <!-- Login Form -->
+        <form id="login-form" action="/login" method="post">
+        <div class="field">
+        <input autocomplete="off" placeholder="Email" class="input-field" type="email" name="email" required />
+        </div>
+        <div class="field">
+        <input placeholder="Password" class="input-field" type="password" name="password" required />
+        </div>
+        <div class="btn">
+        <input type="submit" value="Login" class="button1">
+        <a href="javascript:void(0)" onclick="toggleForm('signup-form')" class="button2">Sign Up</a>
+        </div>
+        </form>
+            
+            <script>
+        function toggleForm(formId) {
+            document.getElementById('login-form').style.display = formId === 'login-form' ? 'block' : 'none';
+            document.getElementById('signup-form').style.display = formId === 'signup-form' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
