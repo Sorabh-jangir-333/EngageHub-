@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Posts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            font-family: 'Arial', sans-serif;
+        }
+        .post-container {
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+        .post-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .post-card:hover {
+            transform: scale(1.03);
+        }
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .logo{
+            width: 50px;
+            height: 50px;
+
+            /* border-radius: 50%; */
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /* background: rgba(0, 0, 0, 0.5); */
+            /* backdrop-filter: blur(10px); */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/"><img src="/images/uploads/logo.webp" alt="avatar" class="logo" /></a>
+      <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+        <% if (user && user.profilePic) { %>
+          <a href="/profile">
+            <img src="/images/uploads/<%= user.profilePic %>" alt="avatar" class="profile-pic" />
+          </a>
+        <% } else { %>
+          <a href="/">
+            <img src="/images/uploads/default_profile.webp" alt="default avatar" class="profile-pic" />
+          </a>
+        <% } %>
+      </div>
+    </nav>
+
+    <div class="post-container">
+      <% posts.reverse().forEach(post => { %>
+      <div class="post-card text-white">
+        <div class="flex items-center mb-2">
+          <img src="/images/uploads/<%= post.user.profilePic %>" class="profile-pic mr-3" alt="User" />
+          <div>
+            <p class="font-bold text-blue-300"><%= post.user.username %></p>
+            <p class="text-sm text-gray-400"><%= new Date(post.date).toLocaleString() %></p>
+          </div>
+        </div>
+        <% if (post.media) { %>
+          <img src="/images/uploads/<%= post.media %>" class="w-full rounded-md" alt="Post Media" />
+        <% } %>
+        <div class="flex justify-between items-center mt-2">
+          <div class="flex space-x-4">
+            <button class="like-btn text-xl" data-post-id="<%= post._id %>">
+                <%= user && user._id  ? "❤️" : "🤍" %>
+            </button>
+            <button class="text-blue-400 text-xl">💬</button>
+            <button class="text-gray-400 text-xl">📤</button>
+          </div>
+          <p class="text-sm text-gray-400 like-count"><%= post.likes.length %> likes</p>
+        </div>
+        <p class="mt-2">
+          <span class="font-bold text-blue-300"><%= post.user.username %></span> <%= post.content %>
+        </p>
+      </div>
+      <% }); %>
+    </div>
+
+    <script>
+      document.querySelectorAll(".like-btn").forEach((btn) => {
+        btn.addEventListener("click", async function () {
+          const postId = this.dataset.postId;
+          const response = await fetch(`/like/${postId}`, { method: "post" });
+          if (response.ok) {
+            const data = await response.json();
+            this.textContent = data.liked ? "❤️" : "🤍";
+            this.closest("div").nextElementSibling.textContent = `${data.likeCount} likes`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
